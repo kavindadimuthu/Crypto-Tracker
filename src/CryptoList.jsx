@@ -24,7 +24,7 @@ const CryptoList = () => {
   useEffect(() => {
     const fetchCryptos = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/cryptos", {
+        const response = await axios.get("http://localhost:5000/api/crypto/getCrypto", {
           params: {
             page,
             limit: rowsPerPage, // Send the rows per page to backend
@@ -47,7 +47,7 @@ const CryptoList = () => {
     // Real-time update using setInterval (every 3 seconds)
     const interval = setInterval(() => {
       fetchCryptos();
-    }, 3000); // 3000 ms = 3 seconds
+    }, 30000); // 3000 ms = 3 seconds
 
     return () => clearInterval(interval); // Clear interval on component unmount
   }, [page, rowsPerPage]);
